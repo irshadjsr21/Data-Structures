@@ -1,7 +1,7 @@
 import java.io.*;
 
 /**
- * This is the main class which executes the DynamicArray class
+ * This is the main class which executes the ArrayQueue class
  * from the given inputs in `input.txt` file.
  */
 class ArrayQueueExecutor {
@@ -20,14 +20,16 @@ class ArrayQueueExecutor {
         int c = Integer.parseInt(lineArr[0]);
         int elem, index;
         switch(c) {
+          // Add element to the queue
           case 1:
             elem = Integer.parseInt(lineArr[1]);
             arr.queue(elem);
             break;
-          // Pop Last Element
+          // Remove element from the queue
           case 2: 
             arr.dequeue();
             break;
+          // Display the queue
           case 3:
             arr.display();
             break;

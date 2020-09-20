@@ -35,6 +35,10 @@ class ArrayStack<T> {
 
   /** 
    * Adds element to the stack.
+   *
+   * Complexity: 
+   *   Average Case (Array don't need resizing) - O(1)
+   *   Worst Case (Array needs resizing) - O(n)
    */
   public void push(T elem) {
     if(top > capacity-1) {
@@ -51,6 +55,8 @@ class ArrayStack<T> {
   /**
    * Removes the element at the end of the array and returns it. 
    * Returns `null` if array is empty.
+   *
+   * Complexity: O(1)
    */
   public T pop() {
     if(top <= 0) {
@@ -61,6 +67,8 @@ class ArrayStack<T> {
 
   /**
    * Returns `true` if the element exists inside the array, otherwise returns `false`.
+   *
+   * Complexity: O(n)
    */
   public boolean contains(T elem) {
     return this.indexOf(elem) != -1;
@@ -68,6 +76,8 @@ class ArrayStack<T> {
   
   /**
    * Returns the index of the given element if exists, otherwise returns `-1`.
+   *
+   * Complexity: O(n)
    */
   public int indexOf(T elem) {
     for(int i=0;i<top;i++) {
@@ -79,14 +89,18 @@ class ArrayStack<T> {
   }
 
   /**
-   * Returns the size of the array.
+   * Returns the size of the stack.
+   *
+   * Complexity: O(1)
    */
   public int size() {
     return top;
   }
 
   /**
-   * Displays the array elements.
+   * Displays the stack elements.
+   *
+   * Complexity: O(n)
    */
   public void display() {
     for(int i=top - 1;i>=0;i--) {

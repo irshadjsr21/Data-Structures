@@ -20,16 +20,16 @@ class ArrayStackExecutor {
         int c = Integer.parseInt(lineArr[0]);
         int elem, index;
         switch(c) {
-          // Push Element
+          // Push element to stack
           case 1:
             elem = Integer.parseInt(lineArr[1]);
             arr.push(elem);
             break;
-          // Pop Last Element
+          // Pop element from stack
           case 2: 
             arr.pop();
             break;
-          // Display array elements
+          // Display stack 
           case 3:
             arr.display();
             break;

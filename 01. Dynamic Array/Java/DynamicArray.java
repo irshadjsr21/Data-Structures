@@ -35,6 +35,10 @@ class DynamicArray<T> {
 
   /** 
    * Adds element at the end of the array.
+   *
+   * Complexity: 
+   *   Average Case (Array don't need resizing) - O(1)
+   *   Worst Case (Array needs resizing) - O(n)
    */
   public void push(T elem) {
     if(size > capacity-1) {
@@ -51,6 +55,8 @@ class DynamicArray<T> {
   /**
    * Removes the element at the end of the array and returns it. 
    * Returns `null` if array is empty.
+   *
+   * Complexity: O(1)
    */
   public T pop() {
     if(size <= 0) {
@@ -62,6 +68,8 @@ class DynamicArray<T> {
   /**
    * Removes the given element from the array.  
    * Returns `true` if element is removed otherwise returns `false`.
+   *
+   * Complexity: O(n)
    */
   public boolean remove(T elem) {
     int index = this.indexOf(elem);
@@ -79,6 +87,8 @@ class DynamicArray<T> {
   /**
    * Replace the element at given index by the given value in the array.  
    * Returns `true` if element is updated otherwise returns `false`.
+   *
+   * Complexity: O(1)
    */
   public boolean update(int index, T elem) {
     if(index >= size) {
@@ -91,6 +101,8 @@ class DynamicArray<T> {
 
   /**
    * Returns `true` if the element exists inside the array, otherwise returns `false`.
+   *
+   * Complexity: O(n)
    */
   public boolean contains(T elem) {
     return this.indexOf(elem) != -1;
@@ -98,6 +110,8 @@ class DynamicArray<T> {
   
   /**
    * Returns the index of the given element if exists, otherwise returns `-1`.
+   *
+   * Complexity: O(n)
    */
   public int indexOf(T elem) {
     for(int i=0;i<size;i++) {
@@ -110,6 +124,8 @@ class DynamicArray<T> {
 
   /**
    * Returns the size of the array.
+   *
+   * Complexity: O(1)
    */
   public int size() {
     return size;
@@ -117,6 +133,8 @@ class DynamicArray<T> {
 
   /**
    * Displays the array elements.
+   *
+   * Complexity: O(n)
    */
   public void display() {
     for(int i=0;i<size;i++) {
