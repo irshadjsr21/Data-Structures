@@ -108,8 +108,15 @@ class LinkedList<T> {
       }
 
       T removedElem = currentNode.value;
-      preNode.next = null;
+
+      if(preNode != null) {
+        preNode.next = null;
+      }
+
       leaf = preNode;
+      if(leaf == null) {
+        root = null;
+      }
 
       currentNode.value = null;
       currentNode.next = null;
