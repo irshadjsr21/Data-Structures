@@ -1,4 +1,5 @@
 import java.util.ArrayDeque;
+import java.util.Stack;
 
 /**
  * BinaryTree is a class to represent a Binary Search Tree data structure with
@@ -45,6 +46,18 @@ class BinaryTree<T extends Comparable> {
     public NodeRemoveDetails(TreeNode root, boolean isRemoved) {
       this.root = root;
       this.isRemoved = isRemoved;
+    }
+  }
+
+  private class TraversalNode {
+    public TreeNode node;
+    public boolean isVisited;
+    public boolean visitedLeft;
+
+    public TraversalNode(TreeNode node) {
+      this.node = node;
+      this.isVisited = false;
+      this.visitedLeft = false;
     }
   }
 
@@ -311,6 +324,98 @@ class BinaryTree<T extends Comparable> {
     }
 
     System.out.println("Size: " + this.size);
+    this.printPreOrder();
+    this.printInOrder();
+    this.printPostOrder();
+    System.out.println();
+  }
+
+  private void preOrder(TreeNode root) {
+    if (root == null)
+      return;
+
+    Stack<TraversalNode> stack = new Stack<TraversalNode>();
+    stack.push(new TraversalNode(root));
+
+    while (!stack.empty()) {
+      TraversalNode currentNode = stack.peek();
+      if (!currentNode.isVisited) {
+        System.out.print(currentNode.node.value + ", ");
+      } else if (!currentNode.visitedLeft) {
+        currentNode.visitedLeft = true;
+        if (currentNode.node.left != null)
+          stack.push(new TraversalNode(currentNode.node.left));
+      } else {
+        stack.pop();
+        if (currentNode.node.right != null)
+          stack.push(new TraversalNode(currentNode.node.right));
+      }
+
+      currentNode.isVisited = true;
+    }
+  }
+
+  private void postOrder(TreeNode root) {
+    if (root == null)
+      return;
+
+    Stack<TraversalNode> stack = new Stack<TraversalNode>();
+    stack.push(new TraversalNode(root));
+
+    while (!stack.empty()) {
+      TraversalNode currentNode = stack.peek();
+      if (!currentNode.visitedLeft) {
+        currentNode.visitedLeft = true;
+        if (currentNode.node.left != null)
+          stack.push(new TraversalNode(currentNode.node.left));
+      } else if (!currentNode.isVisited) {
+        currentNode.isVisited = true;
+        if (currentNode.node.right != null)
+          stack.push(new TraversalNode(currentNode.node.right));
+      } else {
+        System.out.print(currentNode.node.value + ", ");
+        stack.pop();
+      }
+    }
+  }
+
+  private void inOrder(TreeNode root) {
+    if (root == null)
+      return;
+
+    Stack<TraversalNode> stack = new Stack<TraversalNode>();
+    stack.push(new TraversalNode(root));
+
+    while (!stack.empty()) {
+      TraversalNode currentNode = stack.peek();
+      if (!currentNode.isVisited) {
+        currentNode.isVisited = true;
+        if (currentNode.node.left != null)
+          stack.push(new TraversalNode(currentNode.node.left));
+      } else {
+        System.out.print(currentNode.node.value + ", ");
+        stack.pop();
+        if (currentNode.node.right != null)
+          stack.push(new TraversalNode(currentNode.node.right));
+      }
+    }
+  }
+
+  public void printPreOrder() {
+    System.out.print("Preorder: ");
+    this.preOrder(root);
+    System.out.println();
+  }
+
+  public void printPostOrder() {
+    System.out.print("Postorder: ");
+    this.postOrder(root);
+    System.out.println();
+  }
+
+  public void printInOrder() {
+    System.out.print("Inorder: ");
+    this.inOrder(root);
     System.out.println();
   }
 }
