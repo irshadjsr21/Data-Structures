@@ -327,9 +327,13 @@ class BinaryTree<T extends Comparable> {
     this.printPreOrder();
     this.printInOrder();
     this.printPostOrder();
+    this.printLevelOrder();
     System.out.println();
   }
 
+  /**
+   * Internal method to print pre-order.
+   */
   private void preOrder(TreeNode root) {
     if (root == null)
       return;
@@ -355,6 +359,9 @@ class BinaryTree<T extends Comparable> {
     }
   }
 
+  /**
+   * Internal method to print post-order.
+   */
   private void postOrder(TreeNode root) {
     if (root == null)
       return;
@@ -379,6 +386,9 @@ class BinaryTree<T extends Comparable> {
     }
   }
 
+  /**
+   * Internal method to print in-order.
+   */
   private void inOrder(TreeNode root) {
     if (root == null)
       return;
@@ -401,21 +411,61 @@ class BinaryTree<T extends Comparable> {
     }
   }
 
+  /**
+   * Internal method to print level-order.
+   */
+  private void levelOrder(TreeNode root) {
+    if (root == null)
+      return;
+
+    ArrayDeque<TreeNode> queue = new ArrayDeque<TreeNode>();
+    queue.add(root);
+
+    while (!queue.isEmpty()) {
+      TreeNode currentNode = queue.poll();
+      System.out.print(currentNode.value + ", ");
+
+      if (currentNode.left != null)
+        queue.add(currentNode.left);
+
+      if (currentNode.right != null)
+        queue.add(currentNode.right);
+    }
+  }
+
+  /**
+   * Public method to print pre-order.
+   */
   public void printPreOrder() {
     System.out.print("Preorder: ");
     this.preOrder(root);
     System.out.println();
   }
 
+  /**
+   * Public method to print post-order.
+   */
   public void printPostOrder() {
     System.out.print("Postorder: ");
     this.postOrder(root);
     System.out.println();
   }
 
+  /**
+   * Public method to print in-order.
+   */
   public void printInOrder() {
     System.out.print("Inorder: ");
     this.inOrder(root);
+    System.out.println();
+  }
+
+  /**
+   * Public method to print level-order.
+   */
+  public void printLevelOrder() {
+    System.out.print("LevelOrder: ");
+    this.levelOrder(root);
     System.out.println();
   }
 }
