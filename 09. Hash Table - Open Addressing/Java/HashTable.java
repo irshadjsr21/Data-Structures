@@ -107,6 +107,8 @@ class HashTable<T> {
 
   /**
    * Add or update the key in the HashTable.
+   *
+   * Complexity: Average: O(1) Worst: O(n)
    */
   public void setKey(int key, T value) {
     if (this.size >= this.FILL_CAPACITY * capacity) {
@@ -136,6 +138,8 @@ class HashTable<T> {
 
   /**
    * Return the value at the given key.
+   *
+   * Complexity: Average: O(1) Worst: O(n)
    */
   public T getKey(int key) {
     int hash = getHash(key);
@@ -163,6 +167,8 @@ class HashTable<T> {
 
   /**
    * Remove the value at the given key.
+   *
+   * Complexity: Average: O(1) Worst: O(n)
    */
   public boolean removeKey(int key) {
     int hash = getHash(key);
@@ -195,6 +201,8 @@ class HashTable<T> {
 
   /**
    * Displays the structure of the HashTable.
+   *
+   * Complexity: O(n)
    */
   public void displayStructure() {
     int total = 0;
@@ -215,6 +223,8 @@ class HashTable<T> {
 
   /**
    * Returns all the keys in the HashTable.
+   *
+   * Complexity: O(1)
    */
   public Integer[] getKeys() {
     return keys.toArray(new Integer[keys.size()]);
